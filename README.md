@@ -35,3 +35,19 @@ Inside the client, use:
 
 /quit – Leave the chat
 ```
+
+## File Transfer Details
+File transfers are initiated via CLI commands.
+
+When using /sendfile <recipient> <filename>, the specified file must be located in the same directory from which the client (tcpccs) is being run.
+
+The file is transferred over a separate TCP connection to avoid blocking the main chat.
+
+The recipient will be prompted in their terminal to /acceptfile or /rejectfile the incoming file.
+
+```bash
+java client.tcpccs 127.0.0.1 alice
+
+/sendfile bob index.html
+```
+In the example above, index.html must be in the current working directory of the client terminal. If the file is missing or named incorrectly, the client will show a “File not found” error.
